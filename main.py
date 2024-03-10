@@ -14,6 +14,11 @@ def pomodoro_timer(minutes: int) -> None:
 
     TODO:
         - Add audio alert when the timer reaches zero.
+        - Add a reset button to reset the timer.
+        - Add a stop button to stop the timer.
+        - Add a restart button to restart the timer.
+        - Add a settings button to configure the timer.
+        - Add a pause/resume button to pause and resume the timer.
     """
     # Create an empty placeholder for the timer display
     timer_placeholder = st.empty()
