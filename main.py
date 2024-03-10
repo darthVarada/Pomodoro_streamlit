@@ -1,17 +1,41 @@
 import streamlit as st
 import time
 
-def pomodoro_timer(minutes):
-    """Runs a Pomodoro timer for the specified number of minutes."""
+def pomodoro_timer(minutes: int) -> None:
+    """
+    Runs a Pomodoro timer for the specified number of minutes.
+
+    Args:
+        minutes (int): The duration of the Pomodoro timer in minutes.
+
+    This function displays a countdown timer on the Streamlit interface for
+    the specified number of minutes. After the timer reaches zero, a message
+    is displayed indicating that the work session has ended.
+
+    TODO:
+        - Add audio alert when the timer reaches zero.
+    """
+    # Create an empty placeholder for the timer display
     timer_placeholder = st.empty()
+
+    # Display the Pomodoro timer with its duration
     st.write(f"**Temporizador Pomodoro: {minutes} minutos**")
+
+    # Run the countdown timer
     for remaining in range(minutes * 60, 0, -1):
+        # Calculate the remaining minutes and seconds
         mins, secs = divmod(remaining, 60)
+
+        # Display the remaining time
         timer_placeholder.markdown(f"**⏳ {mins:02d}:{secs:02d}**")
+
+        # Pause the timer for 1 second
         time.sleep(1)
-    #aplicar audio de alarme
-    #st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-    timer_placeholder.empty()  # Clear the timer display
+
+    # Clear the timer display
+    timer_placeholder.empty()
+
+    # Display a message indicating the end of the work session
     st.write("**Trabalho Concluído!**")
 
 # Interface do Streamlit
