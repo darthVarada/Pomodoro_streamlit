@@ -19,26 +19,28 @@ def pomodoro_timer(minutes: int) -> None:
         - Add a restart button to restart the timer.
         - Add a settings button to configure the timer.
         - Add a pause/resume button to pause and resume the timer.
+        - Add a rest timer to allow the user to take a short break.
+        - Make sure that every timer gets stored in a database.
     """
-    # Create an empty placeholder for the timer display
-    timer_placeholder = st.empty()
-
     # Display the Pomodoro timer with its duration
     st.write(f"**Temporizador Pomodoro: {minutes} minutos**")
 
+    # Create a progress bar
+    progress_bar = st.progress(0)
+
     # Run the countdown timer
     for remaining in range(minutes * 60, 0, -1):
-        # Calculate the remaining minutes and seconds
-        mins, secs = divmod(remaining, 60)
+        # Calculate the progress as a percentage
+        progress_percentage = (minutes * 60 - remaining) / (minutes * 60)
 
-        # Display the remaining time
-        timer_placeholder.markdown(f"**⏳ {mins:02d}:{secs:02d}**")
+        # Update the progress bar
+        progress_bar.progress(progress_percentage)
 
         # Pause the timer for 1 second
         time.sleep(1)
 
-    # Clear the timer display
-    timer_placeholder.empty()
+    # Clear the progress bar
+    progress_bar.empty()
 
     # Display a message indicating the end of the work session
     st.write("**Trabalho Concluído!**")
