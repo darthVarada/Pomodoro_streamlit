@@ -9,6 +9,7 @@ WORKDIR /app
 
 # Copie o arquivo de definição de dependências do Poetry
 COPY pyproject.toml poetry.lock ./
+COPY app/src /app
 
 # Instale a dependência pangocairo manualmente
 RUN apt-get update && \
