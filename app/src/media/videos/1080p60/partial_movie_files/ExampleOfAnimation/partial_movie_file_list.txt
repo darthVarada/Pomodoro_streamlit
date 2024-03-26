@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:F:/pc/estudos/estudos_python/Pomodoro_streamlit/app/src/media/videos/1080p60/partial_movie_files/ExampleOfAnimation/3977891868_3066971108_223132457.mp4'
+file 'file:F:/pc/estudos/estudos_python/Pomodoro_streamlit/app/src/media/videos/1080p60/partial_movie_files/ExampleOfAnimation/2852726489_1704852926_1101431261.mp4'
+file 'file:F:/pc/estudos/estudos_python/Pomodoro_streamlit/app/src/media/videos/1080p60/partial_movie_files/ExampleOfAnimation/2852726489_4274668979_4084595033.mp4'
+file 'file:F:/pc/estudos/estudos_python/Pomodoro_streamlit/app/src/media/videos/1080p60/partial_movie_files/ExampleOfAnimation/2852726489_1704852926_1660133795.mp4'
+file 'file:F:/pc/estudos/estudos_python/Pomodoro_streamlit/app/src/media/videos/1080p60/partial_movie_files/ExampleOfAnimation/2852726489_2375776975_1268721771.mp4'
+file 'file:F:/pc/estudos/estudos_python/Pomodoro_streamlit/app/src/media/videos/1080p60/partial_movie_files/ExampleOfAnimation/2852726489_1704852926_2698928160.mp4'
