@@ -1,41 +1,27 @@
-FROM python:3.12.2
+# Use a imagem base do Python
+FROM python:3.12
 
-# Define o diretório de trabalho no contêiner
+# Instale o Poetry
+RUN pip install poetry
+
+# Configure o diretório de trabalho
 WORKDIR /app
 
-# Instala as dependências do Manim
-RUN pip install manim
+# Copie o arquivo de definição de dependências do Poetry
+COPY pyproject.toml poetry.lock ./
 
-# Instala o Scoop
-RUN apt-get update && apt-get install -y sudo
-RUN apt-get install -y git && apt-get install -y procps curl sudo unzip
-RUN sudo apt-get install -y powershell
+# Instale a dependência pangocairo manualmente
+RUN apt-get update && \
+    apt-get install -y libpango1.0-dev
 
-SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+# Instale as dependências usando o Poetry
+RUN poetry install --no-dev
 
-RUN Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Instale o Scoop
-RUN iwr -useb get.scoop.sh | iex
-
-# Atualize os repositórios
-RUN scoop update
-
-# Adicione o diretório do Manim ao PATH
-RUN scoop bucket add extras
-RUN scoop install ffmpeg
-
-# Copia o arquivo requirements.txt para o diretório de trabalho
-COPY requirements.txt .
-
-# Instala as dependências Python
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copia os arquivos restantes para o diretório de trabalho
+# Copie os arquivos do projeto para o contêiner
 COPY . .
 
-# Expor a porta que o Streamlit irá utilizar (substitua pela porta do seu aplicativo, se necessário)
+# Exponha a porta em que o Streamlit será executado (se necessário)
 EXPOSE 8501
 
-# Comando para iniciar o seu aplicativo quando o contêiner for iniciado
-CMD ["streamlit", "run", "test.py"]
+# Comando de entrada para iniciar o Streamlit
+CMD ["poetry", "run", "streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
