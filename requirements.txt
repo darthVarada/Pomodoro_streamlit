@@ -1,2 +1,5 @@
 streamlit==1.31.1
+tqdm ==4.66.2
 numpy
+manim
+setuptools

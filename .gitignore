@@ -4,6 +4,14 @@
 
 # Diretório de dependências Python
 /venv/
+/.venv/
+
+# Arquivos de vídeo gerados pelo Manim
+/media/
+/media/*
+/media/**
+/media/***
+
 
 # Arquivos de configuração local
 .env
