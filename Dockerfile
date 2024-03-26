@@ -24,4 +24,4 @@ COPY . .
 EXPOSE 8501
 
 # Comando de entrada para iniciar o Streamlit
-CMD ["poetry", "run", "streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["poetry", "run", "streamlit", "run", "test.py", "--server.port=8501", "--server.address=0.0.0.0"]
