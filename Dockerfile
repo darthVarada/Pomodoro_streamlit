@@ -18,11 +18,8 @@ RUN apt-get update && \
 # Instale as dependências usando o Poetry
 RUN poetry install --no-dev
 
-# Copie os arquivos do projeto para o contêiner
-COPY . .
-
 # Exponha a porta em que o Streamlit será executado (se necessário)
 EXPOSE 8501
 
-# Comando de entrada para iniciar o Streamlit
-CMD ["poetry", "run", "streamlit", "run", "src/test.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Comando de entrada para verificar a presença do arquivo test.py e iniciar o Streamlit
+CMD ["bash", "-c", "ls -la src/test.py && poetry run streamlit run src/test.py --server.port=8501 --server.address=0.0.0.0"]
